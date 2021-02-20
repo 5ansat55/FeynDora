@@ -1,13 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import CustomProgressSteps from "./components/ProgressSteps";
 
 export default function App() {
   return (
+    <SafeAreaView style={styles.container}>
     <View style={styles.container}>
-      <Text>Feyndora Test !</Text>
-      <StatusBar style="auto" />
+    <CustomProgressSteps />
     </View>
+    </SafeAreaView>
   );
 }
 
@@ -17,5 +19,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    margin:10,
   },
 });
