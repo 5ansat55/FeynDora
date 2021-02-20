@@ -1,15 +1,37 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
-//pages
+//screens
 import FirstScreen from "../screens/FirstScreen";
 import SecondScreen from "../screens/SecondScreen";
 import ThirdScreen from "../screens/ThirdScreen";
 import FourthScreen from "../screens/FourthScreen";
 import FifthScreen from "../screens/FifthScreen";
 import SixthScreen from "../screens/SixthScreen";
+//style
+import Colors from "../constants/Colors";
+import PublicStyle from "../constants/PublicStyles";
 
-const CustomProgressSteps = ({ defaultScrollViewProps }) => {
+
+const CustomProgressSteps = () => {
+  const defaultScrollViewProps = {
+    keyboardShouldPersistTaps: "handled",
+    contentContainerStyle: {
+      flex: 1,
+      justifyContent: "center",
+    },
+  };
+  const progressStepsStyle = {
+    activeStepIconBorderColor: Colors.secondColor,
+    activeLabelColor: Colors.firstColor,
+    activeStepNumColor: Colors.thirdColor,
+    activeStepIconColor: "white",
+    completedStepIconColor: Colors.thirdColor,
+    completedProgressBarColor: Colors.thirdColor,
+    completedCheckColor: "white",
+    labelFontFamily: "RobotoBlack",
+  };
+
   const onNextStep = () => {
     console.log("called next step");
   };
@@ -28,55 +50,72 @@ const CustomProgressSteps = ({ defaultScrollViewProps }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <ProgressSteps>
+      <ProgressSteps {...progressStepsStyle}>
         <ProgressStep
           label=""
           onNext={onPaymentStepComplete}
           onPrevious={onPrevStep}
           scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={styles.buttonTextStyle}
+          previousBtnTextStyle={styles.buttonTextStyle}
         >
-          <View style={{ alignItems: "center" }}>
-            <FirstScreen />
-          </View>
+          <FirstScreen />
         </ProgressStep>
-        <ProgressStep label="">
-          <View style={{ alignItems: "center" }}>
-            <SecondScreen />
-          </View>
+        <ProgressStep
+          label=""
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={styles.buttonTextStyle}
+          previousBtnTextStyle={styles.buttonTextStyle}
+        >
+          <SecondScreen />
         </ProgressStep>
-        <ProgressStep label="">
-          <View style={{ alignItems: "center" }}>
-            <ThirdScreen />
-          </View>
+        <ProgressStep
+          label=""
+          label=""
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={styles.buttonTextStyle}
+          previousBtnTextStyle={styles.buttonTextStyle}
+        >
+          <ThirdScreen />
         </ProgressStep>
-        <ProgressStep label="">
-          <View style={{ alignItems: "center" }}>
-            <FourthScreen />
-          </View>
+        <ProgressStep
+          label=""
+          label=""
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={styles.buttonTextStyle}
+          previousBtnTextStyle={styles.buttonTextStyle}
+        >
+          <FourthScreen />
         </ProgressStep>
-        <ProgressStep label="">
-          <View style={{ alignItems: "center" }}>
-            <FifthScreen />
-          </View>
+        <ProgressStep
+          label=""
+          label=""
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={styles.buttonTextStyle}
+          previousBtnTextStyle={styles.buttonTextStyle}
+        >
+          <FifthScreen />
         </ProgressStep>
-        <ProgressStep label="">
-          <View style={{ alignItems: "center" }}>
-            <SixthScreen />
-          </View>
+        <ProgressStep
+          label=""
+          label=""
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={styles.buttonTextStyle}
+          previousBtnTextStyle={styles.buttonTextStyle}
+        >
+          <SixthScreen />
         </ProgressStep>
       </ProgressSteps>
     </View>
   );
 };
 
-CustomProgressSteps.defaultScrollViewProps = {
-  keyboardShouldPersistTaps: "handled",
-  contentContainerStyle: {
-    flex: 1,
-    justifyContent: "center",
+const styles = StyleSheet.create({
+  buttonTextStyle: {
+    color: Colors.thirdColor,
+    fontWeight: "bold",
+    ...PublicStyle.shadow2
   },
-};
-
-const styles = StyleSheet.create({});
+});
 
 export default CustomProgressSteps;
