@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     backgroundColor: "whitesmoke",
-    padding: 20,
-    marginVertical: 10,
+    padding: 10,
+    marginVertical: 12,
     alignItems:"center",
     justifyContent:"center",
-    ...PublicStyles.shadow1
+    ...PublicStyles.shadow2
   },
   title: {
     fontSize: 14,

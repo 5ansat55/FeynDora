@@ -13,7 +13,7 @@ export default CustomText = (props) => {
 const styles = StyleSheet.create({
     title: {
     fontFamily: "RobotoBold",
-    fontSize: 16,
+    fontSize: 21,
     color:Colors.thirdColor
   },
   subTitle:{

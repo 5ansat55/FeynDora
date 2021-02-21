@@ -85,10 +85,10 @@ const Input = props => {
 
 const styles = StyleSheet.create({
   formControl: {
-    width: '100%',
+    width:"50%"
   },
   label: {
-    fontFamily: 'RobotoBlack',
+    fontFamily: 'RobotoRegular',
     marginVertical: 8
   },
   input: {
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     borderBottomColor: '#ccc',
     borderBottomWidth: 2,
-
   },
   errorContainer: {
     marginVertical: 5
