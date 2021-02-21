@@ -6,19 +6,12 @@ import Colors from "../constants/Colors";
 
 const Item = (props) => {
   return (
-    <View style={{...styles.item,...props.style}}>
+    <View style={{ ...styles.item, ...props.style }}>
       <Ionicons name={props.icon} size={24} color={Colors.secondColor} />
       <Text style={styles.title} ellipsizeMode="tail" numberOfLines={1}>
         {props.title}
       </Text>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "flex-end",
-          alignContent: "flex-end",
-          alignItems: "flex-end",
-        }}
-      >
+      <View style={styles.viewIcon}>
         <TouchableOpacity style={styles.button} onPress={props.onNext}>
           <MaterialIcons name="post-add" size={24} color={Colors.secondColor} />
         </TouchableOpacity>
@@ -49,6 +42,12 @@ const styles = StyleSheet.create({
     minWidth: "50%",
     marginLeft: 5,
     maxWidth: 180,
+  },
+  viewIcon: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignContent: "flex-end",
+    alignItems: "flex-end",
   },
   button: {
     borderWidth: 2,
