@@ -27,10 +27,8 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
         <Text style={styles.title}>FEYNDORO</Text>
         <CustomProgressSteps />
-      </View>
     </SafeAreaView>
   );
 }
@@ -41,7 +39,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    margin: 10,
+    margin: 20,
   },
   title: {
     fontFamily: "RobotoBlack",
