@@ -3,14 +3,11 @@ import { StyleSheet, View, Text,FlatList } from "react-native";
 import Input from "../components/Input";
 import CustomText from "../components/CustomText";
 import Colors from "../constants/Colors";
+import Item from "../components/Item";
 
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
 
-const FirstScreen = () => {
+
+const FirstScreen = ({onNext}) => {
   const inputChangeHandler = (id, value, valid) => {
     console.log(value);
   };
@@ -28,7 +25,7 @@ const FirstScreen = () => {
       title: 'Third Item',
     },
   ];
-  const renderItem = ({ item }) => <Item title={item.title} />;
+  const renderItem = ({ item }) => <Item title={item.title} onNext={onNext} />;
 
 
   return (
@@ -44,6 +41,7 @@ const FirstScreen = () => {
         returnKeyType="next"
         onInputChange={inputChangeHandler}
         required
+        placeholder="Write a topic..."
       />
       <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
     </View>
@@ -57,16 +55,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  item: {
-    flex:1,
-    width:"100%",
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-  },
-  title: {
-    fontSize: 16,
-  },
+
 });
 
 export default FirstScreen;
