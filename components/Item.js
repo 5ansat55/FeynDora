@@ -1,36 +1,66 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { AntDesign,MaterialIcons} from '@expo/vector-icons';
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { AntDesign, MaterialIcons, Ionicons } from "@expo/vector-icons";
 import PublicStyles from "../constants/PublicStyles";
 import Colors from "../constants/Colors";
 
-const Item = ({ title,onNext }) => {
-    
-    return(
-  <View style={styles.item}>
-<AntDesign name="staro" size={24} color="black"/>
-    <Text style={styles.title} ellipsizeMode='tail' numberOfLines={1} >{title}</Text>
-    <View>
-    <MaterialIcons name="post-add" size={24} color={Colors.secondColor} onPress={onNext} />
+const Item = (props) => {
+  return (
+    <View style={styles.item}>
+      <Ionicons name="school" size={24} color="black" />
+      <Text style={styles.title} ellipsizeMode="tail" numberOfLines={1}>
+        {props.title}
+      </Text>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          alignContent: "flex-end",
+          alignItems: "flex-end",
+        }}
+      >
+        <TouchableOpacity style={styles.button} onPress={props.onNext}>
+          <MaterialIcons name="post-add" size={24} color={Colors.secondColor} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <AntDesign name="edit" size={24} color={Colors.yellow} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <AntDesign name="delete" size={24} color={Colors.red} />
+        </TouchableOpacity>
+      </View>
     </View>
-  </View>
-)};
+  );
+};
 const styles = StyleSheet.create({
   item: {
-    flexDirection:"row",
+    flexDirection: "row",
     flex: 1,
     width: "100%",
     backgroundColor: "whitesmoke",
     padding: 10,
     marginVertical: 12,
-    alignItems:"center",
-    justifyContent:"center",
-    ...PublicStyles.shadow2
+    alignItems: "center",
+    justifyContent: "flex-start",
+    ...PublicStyles.shadow2,
   },
   title: {
     fontSize: 14,
-    minWidth:"50%",
-    marginLeft:5,
+    minWidth: "50%",
+    marginLeft: 5,
+    maxWidth: 180,
+  },
+  button: {
+    borderWidth: 2,
+    borderColor: "whitesmoke",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 30,
+    height: 30,
+    backgroundColor: "white",
+    borderRadius: 15,
+    margin: 2,
+    ...PublicStyles.shadow1,
   },
 });
 

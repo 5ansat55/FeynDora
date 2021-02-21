@@ -7,7 +7,7 @@ import Colors from "../constants/Colors";
 export default RoundButton = (props) => {
   return (
     <TouchableOpacity style={styles.button} {...props}>
-      <Ionicons name="add-sharp" size={24} color={Colors.thirdColor} />
+      <Ionicons name={props.icon} size={24} color={Colors.thirdColor} />
     </TouchableOpacity>
   );
 };

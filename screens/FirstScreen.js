@@ -23,6 +23,18 @@ const FirstScreen = ({ onNext }) => {
       id: "58694a0f-3da1-471f-bd96-145571e29d72",
       title: "Third Item",
     },
+    {
+      id: "bd7acbea-c1b1-462c2-aed5-3ad53abb28ba",
+      title: "First Item",
+    },
+    {
+      id: "3ac68afc-c605-483d3-a4f8-fbd91aa97f63",
+      title: "Second Item",
+    },
+    {
+      id: "58694a0f-3da1-4711f-bd96-145571e29d72",
+      title: "Third mmmmmmmmmmmmmmmmmsdfsdf",
+    },
   ];
   const renderItem = ({ item }) => <Item title={item.title} onNext={onNext} />;
 
@@ -42,7 +54,7 @@ const FirstScreen = ({ onNext }) => {
         required
         placeholder="Write a topic..."
       />
-      <RoundButton />
+      <RoundButton icon="add-sharp" />
       </View>
       
       <FlatList
