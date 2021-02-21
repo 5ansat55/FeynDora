@@ -8,12 +8,15 @@ import ThirdScreen from "../screens/ThirdScreen";
 import FourthScreen from "../screens/FourthScreen";
 import FifthScreen from "../screens/FifthScreen";
 import SixthScreen from "../screens/SixthScreen";
+import DialogInput from "react-native-dialog-input";
 //style
 import Colors from "../constants/Colors";
 import PublicStyle from "../constants/PublicStyles";
 
 const CustomProgressSteps = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [second, setMinute] = useState();
+  const [dialogOpen,setDialogOpen]=useState(false);
   const defaultScrollViewProps = {
     keyboardShouldPersistTaps: "handled",
     contentContainerStyle: {
@@ -30,11 +33,19 @@ const CustomProgressSteps = () => {
     completedProgressBarColor: Colors.thirdColor,
     completedCheckColor: "white",
     labelFontFamily: "RobotoBlack",
-    progressBarColor:"#ebebe4"
+    progressBarColor: "#ebebe4",
   };
 
   const onNextStep = () => {
     console.log("called next step");
+  };
+
+  const inputChangeHandler = (id, value, valid) => {
+    console.log(value);
+  };
+
+  const defineMinutestoWork = (minute) => {
+    setDialogOpen(true);
   };
 
   const onPaymentStepComplete = () => {
@@ -51,6 +62,19 @@ const CustomProgressSteps = () => {
 
   return (
     <View style={{ flex: 1 }}>
+        <DialogInput
+      isDialogVisible={dialogOpen}
+      title={"Setting Timer"}
+      message={"How much minutes do you want to study this topic ?"}
+      hintInput={"30"}
+      submitInput={(inputText) => {
+        setMinute(inputText);
+        console.log(inputText);
+      }}
+      closeDialog={() => {
+        setDialogOpen(false);
+      }}
+    ></DialogInput>
       <ProgressSteps {...progressStepsStyle} activeStep={activeStep}>
         <ProgressStep
           label=""
@@ -70,13 +94,13 @@ const CustomProgressSteps = () => {
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
           onPrevious={onPrevStep}
+          onNext={defineMinutestoWork}
           scrollable={false}
           viewProps={{ style: { ...styles.container } }}
         >
           <SecondScreen />
         </ProgressStep>
         <ProgressStep
-          label=""
           label=""
           scrollViewProps={defaultScrollViewProps}
           nextBtnTextStyle={styles.buttonTextStyle}
@@ -87,7 +111,6 @@ const CustomProgressSteps = () => {
           <ThirdScreen />
         </ProgressStep>
         <ProgressStep
-          label=""
           label=""
           scrollViewProps={defaultScrollViewProps}
           nextBtnTextStyle={styles.buttonTextStyle}
