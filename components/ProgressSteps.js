@@ -12,7 +12,6 @@ import SixthScreen from "../screens/SixthScreen";
 import Colors from "../constants/Colors";
 import PublicStyle from "../constants/PublicStyles";
 
-
 const CustomProgressSteps = () => {
   const defaultScrollViewProps = {
     keyboardShouldPersistTaps: "handled",
@@ -55,9 +54,10 @@ const CustomProgressSteps = () => {
           label=""
           onNext={onPaymentStepComplete}
           onPrevious={onPrevStep}
-          scrollViewProps={defaultScrollViewProps}
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
+          scrollable={false}
+          viewProps={{ style: { ...styles.container } }}
         >
           <FirstScreen />
         </ProgressStep>
@@ -98,7 +98,6 @@ const CustomProgressSteps = () => {
         </ProgressStep>
         <ProgressStep
           label=""
-          label=""
           scrollViewProps={defaultScrollViewProps}
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
@@ -114,7 +113,10 @@ const styles = StyleSheet.create({
   buttonTextStyle: {
     color: Colors.thirdColor,
     fontWeight: "bold",
-    ...PublicStyle.shadow2
+    ...PublicStyle.shadow2,
+  },
+  container: {
+    flex: 1,
   },
 });
 
