@@ -6,8 +6,8 @@ import Colors from "../constants/Colors";
 
 const Item = (props) => {
   return (
-    <View style={styles.item}>
-      <Ionicons name="school" size={24} color="black" />
+    <View style={{...styles.item,...props.style}}>
+      <Ionicons name={props.icon} size={24} color={Colors.secondColor} />
       <Text style={styles.title} ellipsizeMode="tail" numberOfLines={1}>
         {props.title}
       </Text>

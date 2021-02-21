@@ -70,6 +70,8 @@ const CustomProgressSteps = () => {
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
           onPrevious={onPrevStep}
+          scrollable={false}
+          viewProps={{ style: { ...styles.container } }}
         >
           <SecondScreen />
         </ProgressStep>
@@ -79,6 +81,8 @@ const CustomProgressSteps = () => {
           scrollViewProps={defaultScrollViewProps}
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
+          scrollable={false}
+          viewProps={{ style: { ...styles.container } }}
         >
           <ThirdScreen />
         </ProgressStep>
@@ -88,6 +92,8 @@ const CustomProgressSteps = () => {
           scrollViewProps={defaultScrollViewProps}
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
+          scrollable={false}
+          viewProps={{ style: { ...styles.container } }}
         >
           <FourthScreen />
         </ProgressStep>
@@ -97,6 +103,8 @@ const CustomProgressSteps = () => {
           scrollViewProps={defaultScrollViewProps}
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
+          scrollable={false}
+          viewProps={{ style: { ...styles.container } }}
         >
           <FifthScreen />
         </ProgressStep>
@@ -105,6 +113,8 @@ const CustomProgressSteps = () => {
           scrollViewProps={defaultScrollViewProps}
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
+          scrollable={false}
+          viewProps={{ style: { ...styles.container } }}
         >
           <SixthScreen />
         </ProgressStep>

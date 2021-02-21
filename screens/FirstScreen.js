@@ -36,7 +36,7 @@ const FirstScreen = ({ onNext }) => {
       title: "Third mmmmmmmmmmmmmmmmmsdfsdf",
     },
   ];
-  const renderItem = ({ item }) => <Item title={item.title} onNext={onNext} />;
+  const renderItem = ({ item }) => <Item title={item.title} icon="school" onNext={onNext} />;
 
   return (
     <View style={styles.container}>
