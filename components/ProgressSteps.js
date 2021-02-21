@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
 //screens
@@ -13,6 +13,7 @@ import Colors from "../constants/Colors";
 import PublicStyle from "../constants/PublicStyles";
 
 const CustomProgressSteps = () => {
+  const [activeStep, setActiveStep] = useState(0);
   const defaultScrollViewProps = {
     keyboardShouldPersistTaps: "handled",
     contentContainerStyle: {
@@ -29,6 +30,7 @@ const CustomProgressSteps = () => {
     completedProgressBarColor: Colors.thirdColor,
     completedCheckColor: "white",
     labelFontFamily: "RobotoBlack",
+    progressBarColor:"#ebebe4"
   };
 
   const onNextStep = () => {
@@ -36,11 +38,11 @@ const CustomProgressSteps = () => {
   };
 
   const onPaymentStepComplete = () => {
-    alert("Payment step completed!");
+    setActiveStep(1);
   };
 
   const onPrevStep = () => {
-    console.log("called previous step");
+    setActiveStep(0);
   };
 
   const onSubmitSteps = () => {
@@ -49,23 +51,25 @@ const CustomProgressSteps = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <ProgressSteps {...progressStepsStyle}>
+      <ProgressSteps {...progressStepsStyle} activeStep={activeStep}>
         <ProgressStep
           label=""
-          onNext={onPaymentStepComplete}
+          // onNext={onPaymentStepComplete}
           onPrevious={onPrevStep}
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
+          removeBtnRow={true}
           scrollable={false}
           viewProps={{ style: { ...styles.container } }}
         >
-          <FirstScreen />
+          <FirstScreen onNext={onPaymentStepComplete} />
         </ProgressStep>
         <ProgressStep
           label=""
           scrollViewProps={defaultScrollViewProps}
           nextBtnTextStyle={styles.buttonTextStyle}
           previousBtnTextStyle={styles.buttonTextStyle}
+          onPrevious={onPrevStep}
         >
           <SecondScreen />
         </ProgressStep>
