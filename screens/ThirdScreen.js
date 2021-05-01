@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import CustomText from "../components/CustomText";
-import CountDown from "../components/CountDown";
+import PomodoroTimer from "../components/PomodoroTimer";
 
 const ThirdScreen = () => {
   const studyTopic ="Calışılan Konu";
@@ -10,7 +10,7 @@ const ThirdScreen = () => {
   return (
     <View style={styles.container}>
       <CustomText title="Learning with pomodoro with feynman " subTitle={`let us start to learn ${studyTopic}`} />
-    <CountDown style={styles.countdown} second={second} startTime={startTime} />
+    <PomodoroTimer></PomodoroTimer>
     </View>
   );
 };

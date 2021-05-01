@@ -42,7 +42,7 @@ const SecondScreen = (props) => {
           {id:"10",subTitle: 'Julie'},
         ]}
         keyExtractor={(item) => item.id}
-        renderItem={({item}) => <Item style={styles.item} icon="checkmark-circle-outline" title={item.subTitle} subTitle="click to learn"></Item>}
+        renderItem={({item}) => <Item unVisibleButton={true} style={styles.item} icon="checkmark-circle-outline" title={item.subTitle} subTitle="click to learn"></Item>}
       />
       </View>
   );

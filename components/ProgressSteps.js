@@ -8,7 +8,6 @@ import ThirdScreen from "../screens/ThirdScreen";
 import FourthScreen from "../screens/FourthScreen";
 import FifthScreen from "../screens/FifthScreen";
 import SixthScreen from "../screens/SixthScreen";
-import DialogInput from "react-native-dialog-input";
 //style
 import Colors from "../constants/Colors";
 import PublicStyle from "../constants/PublicStyles";
@@ -62,19 +61,6 @@ const CustomProgressSteps = () => {
 
   return (
     <View style={{ flex: 1 }}>
-        <DialogInput
-      isDialogVisible={dialogOpen}
-      title={"Setting Timer"}
-      message={"How much minutes do you want to study this topic ?"}
-      hintInput={"30"}
-      submitInput={(inputText) => {
-        setMinute(inputText);
-        console.log(inputText);
-      }}
-      closeDialog={() => {
-        setDialogOpen(false);
-      }}
-    ></DialogInput>
       <ProgressSteps {...progressStepsStyle} activeStep={activeStep}>
         <ProgressStep
           label=""
