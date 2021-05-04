@@ -14,7 +14,7 @@ const Item = (props) => {
         {props.title}
       </Text>
       <View style={styles.viewIcon}>
-{!unVisibleButton && (<TouchableOpacity style={styles.button} onPress={props.onNext} >
+    {!unVisibleButton && (<TouchableOpacity style={styles.button} onPress={props.onNext} >
           <MaterialIcons name="post-add" size={24} color={Colors.secondColor} />
         </TouchableOpacity>)}
         <TouchableOpacity style={styles.button}>
