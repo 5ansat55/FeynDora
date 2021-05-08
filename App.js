@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import CustomProgressSteps from "./components/ProgressSteps";
 import * as Font from "expo-font";
 import Colors from "./constants/Colors";
+//I get redux for more readable
+import { Provider, store } from "./store/setupRedux";
 
 export default function App() {
   const [loaded] = Font.useFonts({
@@ -26,10 +28,12 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Provider store={store}>
+      <SafeAreaView style={styles.container}>
         <Text style={styles.title}>FEYNDORO</Text>
         <CustomProgressSteps />
-    </SafeAreaView>
+      </SafeAreaView>
+    </Provider>
   );
 }
 
