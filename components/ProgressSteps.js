@@ -13,7 +13,7 @@ import Colors from "../constants/Colors";
 import PublicStyle from "../constants/PublicStyles";
 
 const CustomProgressSteps = () => {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const [second, setMinute] = useState();
   const [dialogOpen,setDialogOpen]=useState(false);
   const defaultScrollViewProps = {
