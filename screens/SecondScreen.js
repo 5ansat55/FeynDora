@@ -30,19 +30,19 @@ const SecondScreen = (props) => {
       </View>
       <FlatList
         data={[
-          {id:"1",subTitle: 'Devin'},
-          {id:"2",subTitle: 'Dan'},
-          {id:"3",subTitle: 'Dominic'},
-          {id:"4",subTitle: 'Jackson'},
-          {id:"5",subTitle: 'James'},
-          {id:"6",subTitle: 'Joel'},
-          {id:"7",subTitle: 'John'},
-          {id:"8",subTitle: 'Jillian'},
-          {id:"9",subTitle: 'Jimmy'},
-          {id:"10",subTitle: 'Julie'},
+          {id:"1",title: 'Devin'},
+          {id:"2",title: 'Dan'},
+          {id:"3",title: 'Dominic'},
+          {id:"4",title: 'Jackson'},
+          {id:"5",title: 'James'},
+          {id:"6",title: 'Joel'},
+          {id:"7",title: 'John'},
+          {id:"8",title: 'Jillian'},
+          {id:"9",title: 'Jimmy'},
+          {id:"10",title: 'Julie'},
         ]}
         keyExtractor={(item) => item.id}
-        renderItem={({item}) => <Item unVisibleButton={true} style={styles.item} icon="checkmark-circle-outline" title={item.subTitle} subTitle="click to learn"></Item>}
+        renderItem={({item}) => <Item unVisibleButton={true} style={styles.item} icon="checkmark-circle-outline" data={item} subTitle="click to learn"></Item>}
       />
       </View>
   );
