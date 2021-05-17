@@ -1,11 +1,22 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React,{useEffect} from "react";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import CustomProgressSteps from "./components/ProgressSteps";
 import * as Font from "expo-font";
 import Colors from "./constants/Colors";
 //I get redux for more readable
 import { Provider, store } from "./store/setupRedux";
+//SQLİTE
+import {initTable1} from "./helpers/db";
+
+initTable1()
+.then(()=>{
+  console.log("Initialized database");
+})
+.catch(err=>{
+  console.log("Initializing db failed");
+  console.log(err);
+});
 
 export default function App() {
   const [loaded] = Font.useFonts({
@@ -26,6 +37,8 @@ export default function App() {
   if (!loaded) {
     return null;
   }
+
+
 
   return (
     <Provider store={store}>

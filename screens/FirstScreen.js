@@ -1,15 +1,71 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import Input from "../components/Input";
 import CustomText from "../components/CustomText";
 import Colors from "../constants/Colors";
 import Item from "../components/Item";
 import RoundButton from "../components/RoundButton";
+import { useDispatch, useSelector } from "react-redux";
+import * as firstScreenActions from "../store/actions/firstScreenAction";
+import PickerMaterialDialog from "../components/PickerMaterialDialog";
 
 const FirstScreen = ({ onNext }) => {
+  const [title, setTitle] = useState("");
+  const [focus,setFocus] = useState(false);
+  const [visible,setVisible] = useState(false);
+  const dispatch = useDispatch();
+  const topics = useSelector((state) => state.firstScreen.topics);
+
+  const textInput = useRef(null);
+
   const inputChangeHandler = (id, value, valid) => {
-    console.log(value);
+    setTitle(value);
+    // console.log(value);
   };
+
+  const addTopic = () => {
+    dispatch(firstScreenActions.addTopic(title, "0", 0));
+    setTitle("");
+  };
+
+  const deleteTopic = (id) => {
+    dispatch(firstScreenActions.delTopic(id));
+  };
+
+
+  //MODEL KULLANARAK YAPACAKSIN !
+
+  const updateTopic = ({id,title,totalTime,done}) =>{
+    openPickerModal()
+    // console.log({
+    //   id:id,
+    //   title:title,
+    //   totalTime:totalTime,
+    //   done:done
+    // });
+    console.log("calistim");
+    console.log(title);
+    // dispatch(firstScreenActions.uptTopic(id,title,totalTime,done));
+  };
+
+  const openPickerModal = () => {
+    setVisible(prev => !prev);
+  };
+
+  useEffect(() => {
+    dispatch(firstScreenActions.loadTopic());
+  }, [dispatch, deleteTopic, addTopic, updateTopic]);
+
+  const renderItem = ({ item }) => (
+    <Item
+      data={item}
+      onDeleteTopic={deleteTopic}
+      onUptadeTopic={updateTopic}
+      icon="school"
+      onNext={onNext}
+    />
+  );
+
   const DATA = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -36,29 +92,30 @@ const FirstScreen = ({ onNext }) => {
       title: "Third mmmmmmmmmmmmmmmmmsdfsdf",
     },
   ];
-  const renderItem = ({ item }) => <Item title={item.title} icon="school" onNext={onNext} />;
 
   return (
     <View style={styles.container}>
+    <PickerMaterialDialog onVisible={visible} onOpenPickerModal={openPickerModal} />
       <CustomText title="Define your topics" subTitle="which you learn" />
       <View style={styles.inContainer}>
-      <Input
-        id="title"
-        label="Topic"
-        errorText="Please enter a valid topic!"
-        keyboardType="default"
-        autoCapitalize="sentences"
-        autoCorrect
-        returnKeyType="next"
-        onInputChange={inputChangeHandler}
-        required
-        placeholder="Write a topic..."
-      />
-      <RoundButton icon="add-sharp" />
+        <Input
+          id="title"
+          label="Topic"
+          errorText="Please enter a valid topic!"
+          keyboardType="default"
+          autoCapitalize="sentences"
+          autoCorrect
+          returnKeyType="done"
+          defaultValue={title}
+          onInputChange={inputChangeHandler}
+          required
+          placeholder="Write a topic..."
+        />
+        <RoundButton icon="add-sharp" onPress={addTopic} />
       </View>
-      
+
       <FlatList
-        data={DATA}
+        data={topics}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
@@ -73,12 +130,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  inContainer:{
-    flexDirection:"row",
-    justifyContent:"center",
-    alignItems:"center",
-
-  }
+  inContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default FirstScreen;
