@@ -1,4 +1,4 @@
-import { ADD_TOPİC, SET_TOPİC } from "../actions/firstScreenAction";
+import { ADD_TOPİC, SET_TOPİC ,DELETE_TOPİC,UPTADE_TOPIC} from "../actions/firstScreenAction";
 import Topic from "../../model/Topic";
 
 const initialState = {
@@ -10,18 +10,25 @@ export default (state = initialState, action) => {
     case SET_TOPİC:
       return {
         topics: action.topics.map(
-          (tpc) => new Topic(tpc.id.toString(), tpc.title)
+          (tpc) => new Topic(tpc.id.toString(),tpc.title,tpc.totalTime,tpc.done)
         ),
       };
 
     case ADD_TOPİC:
       const newTopic = new Topic(
-        action.topicData.id.toString(),
-        action.topicData.title
+        action.topicData.title,
+        action.topicData.totalTime,
+        action.topicData.done
       );
       return {
         topics: state.topics.concat(newTopic),
       };
+    
+    case DELETE_TOPİC:
+      return state;
+    
+    case UPTADE_TOPIC:
+      return state;
 
     default:
       return state;
